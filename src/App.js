@@ -8,9 +8,10 @@ import {Link} from 'react-router-dom'
 function App() {
   return (
     <div className="App">
-        <Link to="/">Home</Link>
-      <div></div>
-        <Link to="/GameScreen">Game</Link>
+        <div>   
+          <Link to="/">Home</Link>
+          <Link to="/GameScreen">Game</Link>
+        </div>   
         <Routes>
             <Route exact path="/" element={<Home/>} />
             <Route exact path="/GameScreen" element={<GameScreen/>} />
