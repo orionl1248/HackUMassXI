@@ -1,4 +1,6 @@
-import { testFetch } from "./scripts/rateMyProfessor"
+import { apiFetch } from "./scripts/FetchApi"
+import { randomElement } from "./scripts/util"
+import getPeople from "./scripts/RateMyProfessor"
 import { useState, useEffect } from 'react'
 import Button from '@mui/material/Button';
 import "./GameScreen.css"
@@ -8,6 +10,7 @@ import Header from "./Header"
 import IconButton from '@mui/material/IconButton';
 
 export default function GameScreen() {
+  let [professorBase, setProfessorBase] = useState({});
   let [isSubmitted, setSubmitted] = useState(false);
   let [score, setScore] = useState(0);
   let [highScore, setHighScore] = useState(0);
@@ -23,8 +26,15 @@ export default function GameScreen() {
 
   useEffect(() => {
     (async () => {
-      setRight(await testFetch());
-      setLeft(await testFetch());
+      console.log("professorBase", professorBase);
+      setRight(await randomElement(professorBase));
+      setLeft(await randomElement(professorBase));
+    })();
+  }, [professorBase])
+
+  useEffect(() => {
+    (async () => {
+      setProfessorBase(await getPeople());
     })();
   }, []);
 
