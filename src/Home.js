@@ -2,7 +2,7 @@ import "./home.css"
 import {Link} from 'react-router-dom'
 
 const Home = () => {
-  return <div><h1><center><span id = "UMASS"> UMASS </span>Rate My Professor</center></h1>
+  return <div className="HomeBody"><h1><center><span id = "UMASS"> UMASS </span>Rate My Professor</center></h1>
   <h1>Higher or Lower Game</h1>
 
   <button><Link to="/GameScreen"> Start Game</Link></button>
