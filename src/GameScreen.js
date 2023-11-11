@@ -11,12 +11,22 @@ export default function GameScreen() {
   let [isSubmitted, setSubmitted] = useState(false);
   let [score, setScore] = useState(0);
   let [highScore, setHighScore] = useState(0);
+  let [left, setLeft] = useState({});
+  let [right, setRight] = useState({});
 
   useEffect(() => {
     if (isSubmitted) {
-      console.log(testFetch());
+      console.log(left);
+      console.log(right);
     }
-  }, [isSubmitted])  
+  }, [isSubmitted]);
+
+  useEffect(() => {
+    (async () => {
+      setRight(await testFetch());
+      setLeft(await testFetch());
+    })();
+  }, []);
 
   return <>
     <Header />
@@ -28,7 +38,7 @@ export default function GameScreen() {
       </div>
       <div className="HoldsTwoPanels">
         <div className="HalfPanel RightPanel">
-          <Professor />
+          <Professor info={left}/>
         </div>
         <div className="HalfPanel LeftPanel">
           <Button 
@@ -37,7 +47,7 @@ export default function GameScreen() {
             variant="contained"
             className="HigherLowerButton"
           >Higher</Button>
-          <Professor />
+          <Professor info={right}/>
           <Button 
             onClick={()=>{setSubmitted(true)}}
             type="submit"

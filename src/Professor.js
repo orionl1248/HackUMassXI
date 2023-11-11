@@ -1,9 +1,9 @@
 import "./Professor.css"
 
-const Professor = () => {
+const Professor = ({info}) => {
   return (
     <div className="Tile">
-      <h2>Professor</h2>
+      <h2>{info.FirstName} {info.LastName}</h2>
     </div>
   )
 }
