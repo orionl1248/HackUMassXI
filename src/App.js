@@ -8,14 +8,18 @@ import {Link} from 'react-router-dom'
 function App() {
   return (
     <div className="App">
-        <div>   
-          <Link to="/">Home</Link>
-          <Link to="/GameScreen">Game</Link>
-        </div>   
-        <Routes>
-            <Route exact path="/" element={<Home/>} />
-            <Route exact path="/GameScreen" element={<GameScreen/>} />
-        </Routes>
+        {/*
+          <div className="NavBar">
+            <Link to="/">Home</Link>
+            <Link to="/GameScreen">Game</Link>
+          </div>   
+        */}
+        <div className="ScreenPanel">
+          <Routes>
+              <Route exact path="/" element={<Home/>} />
+              <Route exact path="/GameScreen" element={<GameScreen/>} />
+          </Routes>
+        </div>
     </div>
   );
 }
